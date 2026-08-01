@@ -1,5 +1,5 @@
 
-:root { --blue:#6D28D9; --blue-dark:#5B21B6; --navy:#2E1065; --blue-light:#D7FF00; --blue-wash:#F6F3FF; --slate:#6E6684; --ink:#444; --line:#E8E1F7; --white:#fff; --radius:10px; --shadow:0 2px 14px rgba(46,16,101,.10); --wrap:1180px; }
+:root { --blue:#6D28D9; --blue-dark:#5B21B6; --navy:#2E1065; --blue-light:#D7FF00; --blue-wash:#F6F3FF; --slate:#6E6684; --ink:#444; --line:#E8E1F7; --white:#fff; --radius:10px; --shadow:0 2px 14px rgba(46,16,101,.10); --wrap:1180px; --header-h:87px; }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; direction: rtl; scrollbar-width: none; -ms-overflow-style: none; }
 html::-webkit-scrollbar, body::-webkit-scrollbar { width: 0; height: 0; display: none; }
@@ -46,7 +46,7 @@ h3 { font-size:1.65em; }
 .nav details a { font-weight:500; }
 .hero { position:relative; background:var(--navy); overflow:hidden; }
 .slides { display:grid; grid-template-columns:minmax(0,100%); }
-.slide { grid-area:1/1; grid-template-columns:minmax(0,1fr); min-width:0; max-width:100%; opacity:0; transition:opacity 1.4s ease; pointer-events:none; min-height:calc(100svh - 87px); display:grid; align-content:end; padding:40px 0 84px; background-size:cover; background-position:center; position:relative; }
+.slide { grid-area:1/1; grid-template-columns:minmax(0,1fr); min-width:0; max-width:100%; opacity:0; transition:opacity 1.4s ease; pointer-events:none; min-height:calc(100vh - var(--header-h)); display:grid; align-content:end; padding:40px 0 84px; background-size:cover; background-position:center; position:relative; }
 .slide.active { opacity:1; pointer-events:auto; }
 .slide::before { content:""; position:absolute; inset:0; background:linear-gradient(10deg, rgba(35,9,63,.96) 0%, rgba(109,40,217,.72) 45%, rgba(109,40,217,.15) 78%, rgba(215,255,0,.12) 100%); }
 .slide::after { content:""; position:absolute; inset:0; background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/></svg>"); opacity:.18; mix-blend-mode:overlay; pointer-events:none; }
@@ -64,7 +64,6 @@ h3 { font-size:1.65em; }
   .grid--2 { grid-template-columns:1fr; }
   .video-grid { grid-template-columns:1fr; }
   .site-header .wrap { padding-inline:12px; gap:8px; }
-  .slide { min-height:calc(100svh - 79px); min-height:calc(100dvh - 79px); }
 }
 @media (max-width: 640px) { .slide .wrap { padding:0; padding-inline:56px; } .hero-arrow { font-size:2.2rem; } }
 .eyebrow { display:inline-block; margin-bottom:14px; color:var(--blue-light); font-weight:700; letter-spacing:.12em; font-size:.8em; }
@@ -128,8 +127,7 @@ button.btn { cursor:pointer; font:inherit; font-weight:700; }
 .whatsapp-float img { width:34px; height:34px; }
 .skip-link { position:absolute; inset-inline-start:-9999px; top:0; background:var(--blue); color:var(--white); padding:10px 18px; z-index:100; }
 .skip-link:focus { inset-inline-start:0; }
-.header-spacer { height:87px; }
-@media (max-width:640px) { .header-spacer { height:79px; } }
+@media (max-width:640px) { :root { --header-h:79px; } }
 @media (max-width: 940px) {
   .grid--3, .grid--4 { grid-template-columns:repeat(2,1fr); }
   .gallery { grid-template-columns:repeat(2,1fr); }
@@ -262,11 +260,16 @@ a.btn_accessibility ~ a.btn_accessibility { display: none !important; }
    הגובה נמדד ב-JS ונכתב ל---header-h, כי הוא משתנה בין מסכים
    ומשתנה שוב אם מוסיפים פריט לתפריט. המספרים כאן הם רק גיבוי
    למקרה שה-JS לא רץ. */
-.header-spacer { height: var(--header-h, 87px); }
+.header-spacer { height: var(--header-h); }
 
+/* שלוש שכבות בכוונה: vh לדפדפנים ישנים, svh ואז dvh למובייל.
+   dvh מתעדכן כשסרגל הכתובת של הדפדפן נכנס ויוצא, ולכן ההירו
+   נשאר צמוד לתחתית המסך גם תוך כדי גלילה. דפדפן שלא מכיר
+   יחידה מסוימת מתעלם מהשורה שלה ונופל לשורה שמעליה. */
 .slide {
-  min-height: calc(100svh - var(--header-h, 87px));
-  min-height: calc(100dvh - var(--header-h, 87px));
+  min-height: calc(100vh - var(--header-h));
+  min-height: calc(100svh - var(--header-h));
+  min-height: calc(100dvh - var(--header-h));
 }
 
 
