@@ -42,25 +42,8 @@
       "label": "ימי הולדת"
     },
     {
-      "label": "אירועים",
-      "children": [
-        {
-          "href": "#",
-          "label": "כל האירועים"
-        },
-        {
-          "href": "#",
-          "label": "ערבי גיבוש"
-        },
-        {
-          "href": "#",
-          "label": "אירועי חברה"
-        },
-        {
-          "href": "#",
-          "label": "כנסים"
-        }
-      ]
+      "href": "/events",
+      "label": "אירועים"
     },
     {
       "label": "ליגות",
@@ -107,5 +90,7 @@
       "href": "/contact",
       "label": "צור קשר"
     }
-  ]
+  ],
+  "logoMain": "/images/logo-bowling.png",
+  "logoAtb": "/images/logoHeader.jpg"
 }

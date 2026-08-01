@@ -8,7 +8,7 @@ import Base from "../layouts/Base.astro";
   path="/"
 >
 
-<section class="hero" data-screen-label="הירו">
+<section class="hero">
 <div class="slides">
 <article class="slide" id="slide1" style="background-image: url('/images/img2.jpg')">
 <div class="wrap">
@@ -63,17 +63,19 @@ import Base from "../layouts/Base.astro";
 <button aria-label="הבא" class="hero-arrow hero-arrow--next" onclick="&#123;&#123; nextSlide &#125;&#125;">›</button>
 <div class="slide-nav"><a aria-label="מעבר לשקופית 1" href="#slide1"></a><a aria-label="מעבר לשקופית 2" href="#slide2"></a><a aria-label="מעבר לשקופית 3" href="#slide3"></a><a aria-label="מעבר לשקופית 4" href="#slide4"></a><a aria-label="מעבר לשקופית 5" href="#slide5"></a><a aria-label="מעבר לשקופית 6" href="#slide6"></a></div>
 </section>
-<section class="section" data-screen-label="אודות">
+<section class="section">
 <div class="wrap">
 <div class="about-grid">
 <div class="about-media">
 <div class="media-block">
 <h3>"סטרייק בעיניים עצומות" - הכתבה עלינו</h3>
-<video controls="controls" poster="/images/img2.jpg" preload="metadata"><source src="/assets/article.mp4" type="video/mp4">הדפדפן שלך לא תומך בתג וידאו.</source></video>
+<video controls="controls" poster="/images/hobby.jpg" preload="metadata"><source src="/assets/article.mp4" type="video/mp4">הדפדפן שלך לא תומך בתג וידאו.</source></video>
+<button class="btn media-zoom" type="button" data-video="/assets/article.mp4" data-poster="/images/img2.jpg">הגדלה למסך מלא</button>
 </div>
 <div class="media-block">
 <h3>סיור וירטואלי במתחם</h3>
 <video class="video-portrait" controls="controls" poster="/images/gamesMachine.jpg" preload="metadata"><source src="/assets/tour.mp4" type="video/mp4">הדפדפן שלך לא תומך בתג וידאו.</source></video>
+<button class="btn media-zoom" type="button" data-video="/assets/tour.mp4" data-poster="/images/gamesMachine.jpg">הגדלה למסך מלא</button>
 </div>
 </div>
 <div class="about-text">
@@ -87,14 +89,14 @@ import Base from "../layouts/Base.astro";
 <p class="lead">באולינג שערי חדרה הינו מרכז ייחודי מסוגו הכולל 3 מתחמים שונים המתאגדים לעולם של גיבוש, תחרות, חוויה קולינרית והווי חברתי. המרכז הינו חוויה לכל המשפחה, המשלב בילוי, תרבות והנאה לצד מגוון פעילויות, אירועים, הופעות ומשחקים - מבוקר ועד לילה.</p>
 </div>
 <div class="mini-feature">
-<img alt="ליגות" loading="lazy" src="/images/8f73-376e0e0f6a24.jpg"/>
+<img alt="ליגות" loading="lazy" src="/images/img2.jpg"/>
 <div>
 <h3>ליגות</h3>
 <p>ליגת הבית, ליגת נוער, ליגת סניורים, ליגה למקומות עבודה וליגות לאוכלוסייה עם מוגבלויות בכל הרמות - ילדים, נוער ובוגרים.</p>
 </div>
 </div>
 <div class="mini-feature">
-<img alt="חוגים" loading="lazy" src="/images/pizza.jpg"/>
+<img alt="חוגים" loading="lazy" src="/images/img2.jpg"/>
 <div>
 <h3>חוגים</h3>
 <p>לילדים, נוער, בוגרים ולבעלי צרכים מיוחדים, בחסות ה"עמותה למשחקים מיוחדים". החוגים מתקיימים במתכונת שבועית.</p>
@@ -108,7 +110,7 @@ import Base from "../layouts/Base.astro";
 </div>
 </div>
 </section>
-<section class="section section--wash" data-screen-label="מה יש אצלנו">
+<section class="section section--wash">
 <div class="wrap">
 <div class="section-head">
 <h2>מה יש אצלנו</h2>
@@ -140,7 +142,7 @@ import Base from "../layouts/Base.astro";
 </div>
 </article>
 <article class="card">
-<img alt="מסעדה ובר קפה" loading="lazy" src="/images/drinks.jpg"/>
+<img alt="מסעדה ובר קפה" loading="lazy" src="/images/pizza.jpg"/>
 <div class="card-body">
 <h3>מסעדה ובר קפה</h3>
 <p>מקום נוח ונעים לקפה, ארוחות קלות וארוחות משפחתיות בשילוב מסלולי הבאולינג מסביב. מגוון רחב מהתפריט, ניתן להזמין מנות לאיסוף עצמי.</p>
@@ -148,7 +150,7 @@ import Base from "../layouts/Base.astro";
 </div>
 </article>
 <article class="card">
-<img alt="אירועים פרטיים, לחברות ומוסדות" loading="lazy" src="/images/club.jpg"/>
+<img alt="אירועים פרטיים, לחברות ומוסדות" loading="lazy" src="/images/drinks.jpg"/>
 <div class="card-body">
 <h3>אירועים פרטיים, לחברות ומוסדות</h3>
 <p>מיקום לעריכת ערבי גיבוש כולל מסלולים נפרדים, בתחושת VIP. ניתן לשלב ארוחות עם שף צמוד לתפריט יוקרתי.</p>
@@ -156,7 +158,7 @@ import Base from "../layouts/Base.astro";
 </div>
 </article>
 <article class="card">
-<img alt="חוגים" loading="lazy" src="/images/pizza.jpg"/>
+<img alt="חוגים" loading="lazy" src="/images/img2.jpg"/>
 <div class="card-body">
 <h3>חוגים</h3>
 <p>לילדים, נוער, בוגרים ולבעלי צרכים מיוחדים, בחסות ה"עמותה למשחקים מיוחדים". החוגים מתקיימים במתכונת שבועית, וכן פעילות שבועית קבועה למוסדות תמיכה בקהילה.</p>
@@ -166,7 +168,7 @@ import Base from "../layouts/Base.astro";
 </div>
 </div>
 </section>
-<section class="section" data-screen-label="בר מסעדה">
+<section class="section">
 <div class="wrap">
 <div class="section-head">
 <h2>בר/מסעדה - חוויה של טעמים</h2>
@@ -178,7 +180,10 @@ import Base from "../layouts/Base.astro";
 </section>
 
 
-<!-- רצף הסטרייק: הכדור מתגלגל עם הגלילה ומפיל את הפינים בתחתית העמוד -->
+<!-- רצף הסטרייק. הכדור מתגלגל במורד המסך לפי אחוז הגלילה,
+     ובתחתית העמוד נורה אל הפינים. הווידאו עצמו מוסתר —
+     מה שנראה על המסך הוא ה-canvas, שאליו מצוירת כל פריים
+     אחרי הוצאת הרקע הכהה. הלוגיקה ב-public/js/site.js. -->
 <div class="scroll-ball" aria-hidden="true">
   <img src="/assets/bowling-ball.png" alt="" />
 </div>

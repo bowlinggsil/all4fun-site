@@ -76,17 +76,47 @@ const schema = {
   </head>
 
   <body>
+    <!-- רקע הגרדיאנט. קנבס WebGL יחיד שיושב מאחורי כל התוכן
+         (position:fixed, z-index:-1). מוגדר כ-custom element,
+         ולכן חייב להיטען לפני שהתגית מופיעה בעמוד.
+         הפרמטרים כאן הם מה שנבחר בעיצוב — שינוי צבע נעשה כאן. -->
+    <script is:inline src="/js/mesh-bg.js"></script>
+    <mesh-bg
+      color1="#8B5CF6"
+      color2="#E9FF6B"
+      color3="#C4B5FD"
+      speed="0.4"
+      density="1.3"
+      frequency="5.5"
+      amplitude="1"
+      strength="4"
+      rotation="50"
+      position-x="-1.4"
+      brightness="1"
+      grain="on"
+      grain-strength="0.07"
+      frame-rate="10"
+      resolution="1"></mesh-bg>
+
     <a class="skip-link" href="#main">דלג לתוכן</a>
 
     <header class="site-header">
       <div class="wrap">
-        <a class="nav-logo" href="/" aria-label="דף הבית">
-          <img
-            src="/images/logoHeader.jpg"
-            alt={site.name}
-            width="180"
-            height="52"
-          />
+        <!-- הלוגו הראשי, בפתח השורה (ימין ב-RTL).
+             ארבעה עותקים של אותה תמונה על ציר Z נותנים את עומק התלת מימד;
+             l1-l3 הן שכבות הצל, top היא התמונה שנראית בפועל. -->
+        <a
+          class="nav-logo"
+          href="/"
+          aria-label="דף הבית"
+          style="perspective:700px; display:block"
+        >
+          <span class="logo3d">
+            <img class="l3" src={site.logoMain} alt="" aria-hidden="true" />
+            <img class="l2" src={site.logoMain} alt="" aria-hidden="true" />
+            <img class="l1" src={site.logoMain} alt="" aria-hidden="true" />
+            <img class="top" src={site.logoMain} alt={site.name} />
+          </span>
         </a>
 
         <button
@@ -123,8 +153,31 @@ const schema = {
             }
           </ul>
         </nav>
+
+        <!-- לוגו ATB, בסוף השורה (שמאל ב-RTL) -->
+        <a class="logo" href="/">
+          <img
+            src={site.logoAtb}
+            alt="ATB"
+            width="120"
+            height="52"
+            style="height:52px; width:auto"
+          />
+        </a>
+
+        <!-- הכיתוב שלצד הלוגו.
+             span ולא h1 בכוונה: ההדר חוזר בכל עמוד, ו-h1 כאן היה יוצר
+             כותרת ראשית שנייה בכל עמוד ומבלבל את מנועי החיפוש.
+             הסטיילינג זהה, ההבדל סמנטי בלבד. -->
+        <span class="header-caption">מרכז פנאי ובילוי</span>
       </div>
     </header>
+
+    <!-- ההדר הוא position:fixed ולכן מוצא מזרימת המסמך.
+         המרווח הזה תופס את מקומו, אחרת ראש כל עמוד מוסתר מתחת להדר
+         והירו מסתיים גובה-הדר לפני תחתית המסך. הגובה חייב להתאים
+         לגובה ההדר בפועל: 87px בדסקטופ, 79px בנייד. -->
+    <div class="header-spacer" aria-hidden="true"></div>
 
     <main id="main">
       <slot />
@@ -164,12 +217,12 @@ const schema = {
           <div>
             <h3>אירועים</h3>
             <ul>
-              <li><a href="#">אירועי חברה</a></li>
-              <li><a href="#">ערבי גיבוש</a></li>
+              <li><a href="/events">אירועי חברה</a></li>
+              <li><a href="/events">ערבי גיבוש</a></li>
               <li><a href="#">אירועי בר/בת מצווה</a></li>
               <li><a href="#">מסיבות רווקים</a></li>
               <li><a href="#">חתונות</a></li>
-              <li><a href="#">כנסים</a></li>
+              <li><a href="/events">כנסים</a></li>
             </ul>
           </div>
 
@@ -198,14 +251,33 @@ const schema = {
       <img src="/images/WhatsappIcon.png" alt="" width="34" height="34" />
     </a>
 
+    <!-- לייטבוקס להגדלת סרטונים. נסגר בלחיצה על הכפתור,
+         על הרקע, או ב-Escape. הפעלה: כל אלמנט עם data-video. -->
+    <div class="video-lightbox" hidden>
+      <button class="lightbox-close" type="button" aria-label="סגירה">✕</button>
+      <video controls playsinline></video>
+    </div>
+
     <script src="/js/site.js" is:inline defer></script>
 
-    <!-- ווידג'ט נגישות (שירות חיצוני, לפי בקשת הלקוח) -->
+    <!-- ווידג'ט הנגישות.
+         שימו לב לפני שנוגעים: הווידג'ט דורש jQuery, ובודק בפירוש
+         שהגרסה היא 3 ומעלה. זו הסיבה היחידה ש-jQuery נטען באתר —
+         שאר הקוד לא משתמש בו. מחיקת jQuery תפיל את כפתור הנגישות בשקט,
+         בלי שגיאה גלויה.
+         שניהם defer כדי שלא יחסמו את הרינדור, והסדר חייב להישמר:
+         הגדרות -> jQuery -> הווידג'ט. -->
     <script is:inline>
       var accessibility_rtl = true;
       var pixel_from_side = 20;
       var pixel_from_start = 20;
     </script>
+    <script
+      is:inline
+      defer
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"></script>
     <script
       is:inline
       defer

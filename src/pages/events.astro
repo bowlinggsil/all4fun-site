@@ -1,0 +1,90 @@
+---
+import Base from "../layouts/Base.astro";
+
+/* תוכן העמוד יושב כאן ולא ב-HTML כדי שיהיה קל להוסיף
+   או להסיר סוג אירוע בלי לגעת בפריסה. */
+const events = [
+  {
+    title: "ערבי גיבוש",
+    image: "/images/club.jpg",
+    text: "מיקום לעריכת ערבי גיבוש כולל מסלולים נפרדים, בתחושת VIP. ניתן לשלב ארוחות עם שף צמוד לתפריט יוקרתי.",
+  },
+  {
+    title: "אירועי חברה",
+    image: "/images/img2.jpg",
+    text: "אולם לקיום אירועים עד ל-100 איש, עם 22 מסלולי באולינג, משחקייה וקולנוע 7 מימד באותו מתחם.",
+  },
+  {
+    title: "כנסים",
+    image: "/images/resMain.jpg",
+    text: "מקום נוח ונעים לקפה, ארוחות קלות וארוחות משפחתיות בשילוב מסלולי הבאולינג מסביב.",
+  },
+];
+
+const menus = [
+  { title: "גיבושון", pdf: "/pdf/gibush2026.pdf" },
+  { title: "אפשרות 1", pdf: "/pdf/optionA.pdf" },
+  { title: "אפשרות 2", pdf: "/pdf/optionB.pdf" },
+  { title: "אפשרות 3", pdf: "/pdf/optionC.pdf" },
+];
+---
+
+<Base
+  title="אירועים בבאולינג שערי חדרה | ערבי גיבוש, אירועי חברה וכנסים"
+  description="אירועים פרטיים, לחברות ולמוסדות בבאולינג שערי חדרה: ערבי גיבוש עם מסלולים נפרדים, אירועי חברה עד 100 איש, כנסים ותפריטי אירועים."
+  path="/events"
+>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">מרכז פנאי ובילוי</p>
+      <h1>אירועים</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>אירועים פרטיים, לחברות ומוסדות</h2>
+        <p class="lead">
+          מיקום לעריכת ערבי גיבוש כולל מסלולים נפרדים, בתחושת VIP. ניתן לשלב
+          ארוחות עם שף צמוד לתפריט יוקרתי.
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        {
+          events.map((e) => (
+            <article class="card">
+              <img src={e.image} alt={e.title} loading="lazy" />
+              <div class="card-body">
+                <h3>{e.title}</h3>
+                <p>{e.text}</p>
+                <a class="btn" href="/contact">לתיאום אירוע</a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--wash">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>תפריטי אירועים וגיבושים</h2>
+      </div>
+      <div class="grid grid--4">
+        {
+          menus.map((m) => (
+            <article class="card">
+              <div class="card-body">
+                <h3>{m.title}</h3>
+                <a class="btn" href={m.pdf}>צפייה בתפריט (PDF)</a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

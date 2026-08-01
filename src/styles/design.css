@@ -35,7 +35,7 @@ h3 { font-size:1.65em; }
 .nav a[aria-current="page"]:hover { background:#6D28D9; color:#fff; }
 .nav details[open] > ul a { color:var(--navy); }
 .nav details[open] > ul a:hover { background:#D7FF00; color:var(--navy); }
-.site-header h1 { font-family:"Open Sans","Segoe UI",Arial,sans-serif; font-weight:700; line-height:1.3; color:#000 !important; }
+.site-header h1, .site-header .header-caption { font-family:"Open Sans","Segoe UI",Arial,sans-serif; font-weight:700; line-height:1.3; color:#000 !important; }
 .nav-toggle { color:#000; }
 .nav details { position:relative; }
 .nav summary { list-style:none; }
@@ -144,7 +144,6 @@ button.btn { cursor:pointer; font:inherit; font-weight:700; }
   .grid--2, .grid--3, .grid--4, .video-grid { grid-template-columns:1fr; }
   .gallery { grid-template-columns:1fr 1fr; }
   .section { padding:46px 0; }
-  .slide { min-height:56vh; }
 }
 
 /* 3D floating logo */
@@ -164,8 +163,8 @@ button.btn { cursor:pointer; font:inherit; font-weight:700; }
   .nav-toggle { order: -1; margin-inline-start: calc(2vw - 12px); margin-inline-end: 0; }
   .site-header .nav-logo { margin-inline: auto; transform: none; }
   .site-header .logo { order: 4; margin-inline-end: calc(2vw - 12px); }
-  .site-header h1 { order: 2; }
-  .site-header .logo, .site-header h1 { transform: none; }
+  .site-header h1, .site-header .header-caption { order: 2; }
+  .site-header .logo, .site-header h1, .site-header .header-caption { transform: none; }
   .nav { transform: none; }
 }
 @media (max-width: 640px) {
@@ -173,7 +172,7 @@ button.btn { cursor:pointer; font:inherit; font-weight:700; }
   .logo img { height: 34px; }
   .nav-logo-img { height: 52px !important; }
   .logo3d, .logo3d img { width: 52px; height: 52px; }
-  .site-header h1 { font-size: 1.15em !important; white-space: nowrap; line-height: 1.2; min-width: 0; flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; }
+  .site-header h1, .site-header .header-caption { font-size: 1.15em !important; white-space: nowrap; line-height: 1.2; min-width: 0; flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; }
 }
 
 /* accessibility widget: button overlaps the header, rows open below it */
@@ -208,7 +207,7 @@ a.btn_accessibility ~ a.btn_accessibility { display: none !important; }
 /* real pins - keyed video, no background */
 .strike-cam { position:fixed; right:6px; bottom:-6px; width:min(250px,40vw); aspect-ratio:47/32; z-index:34; pointer-events:none; opacity:0; transition:opacity .5s ease; }
 .strike-cam.armed, .strike-cam.play { opacity:1; }
-.strike-cam.gone { opacity:0; transition:opacity .8s ease .5s; }
+.strike-cam.gone { opacity:0; transition:opacity 2s ease; }
 .strike-cam canvas { width:100%; height:100%; display:block; filter:saturate(.5) brightness(1.07) drop-shadow(0 10px 14px rgba(46,16,101,.28)); }
 .strike-cam video { position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
 @media (max-width: 640px) { .strike-cam { width:52vw; bottom:-4px; } }
@@ -222,3 +221,58 @@ a.btn_accessibility ~ a.btn_accessibility { display: none !important; }
 .mini-feature, .about-text > .mini-feature { padding:16px 18px; }
 .gallery img { box-shadow:0 10px 24px rgba(46,16,101,.16); }
 .btn_accessibility_action { transform: translateY(22px); }
+
+
+/* --- לייטבוקס: מוסתר עד לפתיחה --- */
+.video-lightbox[hidden] { display: none; }
+.video-lightbox { position: relative; }
+
+/* --- מציין מקום לתמונה שטרם הועלתה --- */
+.image-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 120px;
+  padding: 18px;
+  text-align: center;
+  color: var(--slate);
+  font-size: .9em;
+  background: rgba(240, 234, 253, .6);
+  border: 1px dashed rgba(109, 40, 217, .35);
+  border-radius: var(--radius);
+}
+
+
+/* --- הכיתוב שלצד הלוגו בהדר ---
+   span ולא h1 בכוונה: ההדר חוזר בכל עמוד, ו-h1 כאן היה יוצר
+   כותרת ראשית כפולה. הסטיילינג חייב לשבת כאן ולא inline,
+   אחרת כללי הנייד למטה לא מצליחים לגבור עליו. */
+.site-header .header-caption {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #000;
+  white-space: nowrap;
+}
+
+/* --- גובה ההדר בזמן ריצה ---
+   ההדר הוא fixed, אז המרווח מתחתיו וגובה ההירו נגזרים מהגובה שלו.
+   הגובה נמדד ב-JS ונכתב ל---header-h, כי הוא משתנה בין מסכים
+   ומשתנה שוב אם מוסיפים פריט לתפריט. המספרים כאן הם רק גיבוי
+   למקרה שה-JS לא רץ. */
+.header-spacer { height: var(--header-h, 87px); }
+
+.slide {
+  min-height: calc(100svh - var(--header-h, 87px));
+  min-height: calc(100dvh - var(--header-h, 87px));
+}
+
+
+/* --- רקע כותרת העמוד, לפי מה שהיה באתר הישן ---
+   כל עמוד קיבל שם תמונת רואש משלו. הכלל הכללי למעלה
+   נותן img2.jpg, וכאן דורסים רק במקומות שבהם היה משהו אחר. */
+.page-head--birthdays { background-image: url("/images/huledtMain.jpg"); }
+.page-head--bar       { background-image: url("/images/resMain.jpg"); }
+.page-head--about     { background-image: url("/images/about.jpg"); }
