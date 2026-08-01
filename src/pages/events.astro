@@ -22,9 +22,12 @@ const events = [
 ];
 
 const menus = [
-  { title: "גיבושון", pdf: "/pdf/gibush2026.pdf" },
-  { title: "אפשרות 1", pdf: "/pdf/optionA.pdf" },
-  { title: "אפשרות 2", pdf: "/pdf/optionB.pdf" },
+  { title: "בראנץ'", image: "/images/branch2026.jpg", pdf: "/pdf/branch2026.pdf" },
+  { title: "גיבושון", image: "/images/gibush2026.jpg", pdf: "/pdf/gibush2026.pdf" },
+  { title: "נשנושים 2026", image: "/images/nishnush2026.jpg", pdf: "/pdf/nishnush2026.pdf" },
+  { title: "נשנושים חלבי 2026", image: "/images/nishnushHalavi2026.jpg", pdf: "/pdf/nishnushHalavi2026.pdf" },
+  { title: "אפשרות 1", image: "/images/res1.jpg", pdf: "/pdf/optionA.pdf" },
+  { title: "אפשרות 2", image: "/images/res3.jpg", pdf: "/pdf/optionB.pdf" },
   { title: "אפשרות 3", pdf: "/pdf/optionC.pdf" },
 ];
 ---
@@ -73,10 +76,11 @@ const menus = [
       <div class="section-head">
         <h2>תפריטי אירועים וגיבושים</h2>
       </div>
-      <div class="grid grid--4">
+      <div class="grid grid--3">
         {
           menus.map((m) => (
             <article class="card">
+              {m.image && <img src={m.image} alt={m.title} loading="lazy" />}
               <div class="card-body">
                 <h3>{m.title}</h3>
                 <a class="btn" href={m.pdf}>צפייה בתפריט (PDF)</a>
