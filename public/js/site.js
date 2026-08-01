@@ -262,7 +262,13 @@
       var p = Math.min(1, Math.max(0, doc.scrollTop / max));
       var hdr = document.querySelector(".site-header");
       var minY = (hdr ? hdr.offsetHeight : 80) + 14;
-      var maxY = doc.clientHeight - ball.offsetHeight - 18;
+      /* נקודת הנחיתה נגזרת מהמלבן של הפינים, לא מגובה החלון.
+         הכדור והפינים שניהם fixed, כלומר באותה מערכת קואורדינטות,
+         ולכן הכדור נוחת על אותה נקודה בפינים בכל גודל מסך.
+         חישוב לפי clientHeight נשבר בנייד: סרגל הכתובת נכנס ויוצא
+         תוך כדי גלילה, הגובה משתנה, והכדור עוצר לפני הפינים. */
+      var camBox = cam.getBoundingClientRect();
+      var maxY = camBox.top + camBox.height * 0.69 - ball.offsetHeight / 2;
 
       cam.classList.toggle("armed", p > 0.9 && !striking);
 
@@ -303,11 +309,15 @@
       }
     }
 
-    window.addEventListener(
-      "scroll",
-      function () { if (!ballRaf) ballRaf = requestAnimationFrame(tick); },
-      { passive: true }
-    );
+    var queueTick = function () {
+      if (!ballRaf) ballRaf = requestAnimationFrame(tick);
+    };
+    window.addEventListener("scroll", queueTick, { passive: true });
+    /* בנייד גובה החלון משתנה בלי אירוע גלילה - סרגל הכתובת נכנס
+       ויוצא, והמסך מסתובב. בלי המאזינים האלה הכדור נשאר תקוע
+       בנקודה שחושבה לגובה חלון ישן. */
+    window.addEventListener("resize", queueTick);
+    window.addEventListener("orientationchange", queueTick);
     tick();
   } else if (ball) {
     /* המשתמש ביקש להפחית תנועה, או שהדפדפן לא תומך.
