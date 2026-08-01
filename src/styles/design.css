@@ -1,11 +1,27 @@
 
-:root { --blue:#6D28D9; --blue-dark:#5B21B6; --navy:#2E1065; --blue-light:#D7FF00; --blue-wash:#F6F3FF; --slate:#6E6684; --ink:#444; --line:#E8E1F7; --white:#fff; --radius:10px; --shadow:0 2px 14px rgba(46,16,101,.10); --wrap:1180px; --header-h:87px; }
+:root { --blue:#6D28D9; --blue-dark:#5B21B6; --navy:#2E1065; --blue-light:#D7FF00; --blue-wash:#F6F3FF; --slate:#6E6684; --ink:#444; --line:#E8E1F7; --white:#fff; --radius:10px; --shadow:0 2px 14px rgba(46,16,101,.10); --wrap:1180px; --header-h:87px; --bg-veil:.88; }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; direction: rtl; scrollbar-width: none; -ms-overflow-style: none; }
 html::-webkit-scrollbar, body::-webkit-scrollbar { width: 0; height: 0; display: none; }
 body { overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
 body { margin:0; font-family:"Open Sans","Segoe UI",Arial,sans-serif; font-size:16px; line-height:1.75; color:var(--ink); background:var(--white); direction:rtl; }
+/* --- ריכוך רקע המש ---
+   <mesh-bg> הוא שכבה קבועה ב-z-index:-1 מאחורי כל הדף, ורוב
+   הסקשנים שקופים. בלי ריכוך, כתמים סגולים כהים נעים מתחת
+   לכותרות ולטקסט הכהה והם הופכים לבלתי קריאים.
+   הצעיף יושב באותה שכבה אבל אחרי המש בסדר העץ, כלומר בין המש
+   לתוכן: הגרדיאנט נשאר גלוי כפסטל, והטקסט חוזר לרקע בהיר יציב.
+   לכוונון עדין - --bg-veil ב-:root. */
+body::after {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:rgba(255,255,255,var(--bg-veil));
+  pointer-events:none;
+}
+
 img { max-width:100%; height:auto; display:block; }
 a { color:var(--blue); text-decoration:none; }
 a:hover { color:var(--blue-dark); text-decoration:underline; }
