@@ -1,0 +1,22 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/default.asp",  "destination": "/",          "permanent": true },
+    { "source": "/about.asp",    "destination": "/about",     "permanent": true },
+    { "source": "/birthDay.asp", "destination": "/birthdays", "permanent": true },
+    { "source": "/bar.asp",      "destination": "/bar",       "permanent": true },
+    { "source": "/hobby.asp",    "destination": "/classes",   "permanent": true },
+    { "source": "/contact.asp",  "destination": "/contact",   "permanent": true },
+    { "source": "/Menu102023.pdf", "destination": "/pdf/Menu102023.pdf", "permanent": true }
+  ],
+  "headers": [
+    { "source": "/images/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/(.*)", "headers": [
+      { "key": "X-Content-Type-Options", "value": "nosniff" },
+      { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+    ]}
+  ]
+}

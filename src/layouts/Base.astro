@@ -1,0 +1,215 @@
+---
+import site from "../data/site.json";
+import "../styles/design.css";
+
+export interface Props {
+  title: string;
+  description: string;
+  path: string;
+}
+const { title, description, path } = Astro.props;
+const canonical = site.url + (path === "/" ? "/" : path);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BowlingAlley",
+  name: site.name,
+  alternateName: site.shortName,
+  url: site.url + "/",
+  image: site.url + "/images/logo.jpg",
+  telephone: site.phoneIntl,
+  faxNumber: site.fax,
+  email: site.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.street,
+    addressLocality: site.city,
+    addressCountry: "IL",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday"],
+      opens: "10:00",
+      closes: "23:30",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Thursday", "Friday", "Saturday"],
+      opens: "10:00",
+      closes: "24:00",
+    },
+  ],
+  sameAs: [site.social.facebook, site.social.instagram],
+};
+---
+
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={site.url + "/images/logo.jpg"} />
+    <meta property="og:locale" content="he_IL" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/images/logo.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Open+Sans:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">דלג לתוכן</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="nav-logo" href="/" aria-label="דף הבית">
+          <img
+            src="/images/logoHeader.jpg"
+            alt={site.name}
+            width="180"
+            height="52"
+          />
+        </a>
+
+        <button
+          class="nav-toggle"
+          aria-controls="mainnav"
+          aria-expanded="false"
+          aria-label="פתיחת תפריט"
+        >☰</button>
+
+        <nav class="nav" id="mainnav" aria-label="ניווט ראשי">
+          <ul>
+            {
+              site.nav.map((item) =>
+                item.children ? (
+                  <li>
+                    <details>
+                      <summary>{item.label}</summary>
+                      <ul>
+                        {item.children.map((c) => (
+                          <li><a href={c.href}>{c.label}</a></li>
+                        ))}
+                      </ul>
+                    </details>
+                  </li>
+                ) : (
+                  <li>
+                    <a
+                      href={item.href}
+                      aria-current={item.href === path ? "page" : undefined}
+                    >{item.label}</a>
+                  </li>
+                )
+              )
+            }
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="grid grid--4">
+          <div>
+            <h3>{site.name}</h3>
+            <p>רחוב פקיעין 1<br />קניון שערי חדרה</p>
+            <p>
+              <strong>טלפון:</strong>
+              <a href={"tel:" + site.phoneIntl.replace(/-/g, "")}>{site.phone}</a><br />
+              <strong>פקס:</strong> {site.fax}<br />
+              <strong>אימייל:</strong>
+              <a href={"mailto:" + site.email}>{site.email}</a>
+            </p>
+            <div class="social">
+              <a href={site.social.facebook} rel="noopener">פייסבוק</a>
+              <a href={site.social.instagram} rel="noopener">אינסטגרם</a>
+            </div>
+          </div>
+
+          <div>
+            <h3>תפריט ראשי</h3>
+            <ul>
+              <li><a href="/">דף הבית</a></li>
+              <li><a href="/about">אודות</a></li>
+              <li><a href="/birthdays">ימי הולדת</a></li>
+              <li><a href="/bar">בר/מסעדה</a></li>
+              <li><a href="/classes">חוגים</a></li>
+              <li><a href="/contact">צור קשר</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>אירועים</h3>
+            <ul>
+              <li><a href="#">אירועי חברה</a></li>
+              <li><a href="#">ערבי גיבוש</a></li>
+              <li><a href="#">אירועי בר/בת מצווה</a></li>
+              <li><a href="#">מסיבות רווקים</a></li>
+              <li><a href="#">חתונות</a></li>
+              <li><a href="#">כנסים</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>שעות פעילות</h3>
+            <ul>
+              {site.hours.map((h) => <li>{h.label}: {h.value}</li>)}
+            </ul>
+            <h3 style="margin-top:22px">התפריט שלנו</h3>
+            <ul>
+              <li><a href={site.menuPdf}>צפייה בתפריט (PDF)</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">© {site.name} · כל הזכויות שמורות</div>
+      </div>
+    </footer>
+
+    <a
+      class="whatsapp-float"
+      href={"https://api.whatsapp.com/send?phone=" + site.whatsapp}
+      rel="noopener"
+      aria-label="שליחת הודעת וואטסאפ"
+    >
+      <img src="/images/WhatsappIcon.png" alt="" width="34" height="34" />
+    </a>
+
+    <script src="/js/site.js" is:inline defer></script>
+
+    <!-- ווידג'ט נגישות (שירות חיצוני, לפי בקשת הלקוח) -->
+    <script is:inline>
+      var accessibility_rtl = true;
+      var pixel_from_side = 20;
+      var pixel_from_start = 20;
+    </script>
+    <script
+      is:inline
+      defer
+      src="https://www.negishim.com/accessibility/accessibility_pro_group255.js"
+    ></script>
+  </body>
+</html>

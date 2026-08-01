@@ -1,0 +1,68 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="צור קשר | באולינג שערי חדרה, רחוב פקיעין 1 חדרה"
+  description="פרטי התקשרות של באולינג שערי חדרה: טלפון 04-6222575, רחוב פקיעין 1 קניון שערי חדרה, שעות פתיחה וטופס פנייה."
+  path="/contact"
+>
+
+<section class="page-head" data-screen-label="כותרת עמוד">
+<div class="wrap">
+<p class="eyebrow">מרכז פנאי ובילוי</p>
+<h1>צור קשר</h1>
+</div>
+</section>
+<section class="section" data-screen-label="פרטי קשר וטופס">
+<div class="wrap">
+<div class="grid grid--2">
+<div>
+<h2>יצירת קשר</h2>
+<ul class="info-list">
+<li><strong>כתובת</strong>רחוב פקיעין 1, קניון שערי חדרה</li>
+<li><strong>שעות פעילות</strong>א' - ד': 10:00-23:30<br/>ה' - ש': 10:00-24:00</li>
+<li><strong>טלפון</strong><a href="tel:+97246222575">04-6222575</a></li>
+<li><strong>פקס</strong>04-6222557</li>
+<li><strong>אימייל</strong><a href="mailto:all4fun@netvision.net.il">all4fun@netvision.net.il</a></li>
+<li><strong>וואטסאפ</strong><a href="https://api.whatsapp.com/send?phone=972536402639" rel="noopener">שליחת הודעה בוואטסאפ</a></li>
+</ul>
+</div>
+<form class="form-grid">
+<h3 style="margin: 0">השאירו פרטים ונחזור אליכם</h3>
+<div>
+<label for="fullname">שם מלא</label>
+<input autocomplete="name" id="fullname" name="fullname" type="text"/>
+</div>
+<div>
+<label for="phone">טלפון</label>
+<input autocomplete="tel" id="phone" name="phone" type="tel"/>
+</div>
+<div>
+<label for="email">אימייל</label>
+<input autocomplete="email" id="email" name="email" type="email"/>
+</div>
+<div>
+<label for="subject">נושא</label>
+<select id="subject" name="subject">
+<option>יום הולדת</option>
+<option>אירוע</option>
+<option>הזמנת מסלול</option>
+<option>חוגים</option>
+<option>אחר</option>
+</select>
+</div>
+<div>
+<label for="msg">הודעה</label>
+<textarea id="msg" name="msg" rows="4"></textarea>
+</div>
+<button class="btn" type="submit">שליחה</button>
+</form>
+</div>
+<div style="margin-top: 40px">
+<iframe class="map" loading="lazy" src="https://maps.google.com/maps?q=%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%A9%D7%A2%D7%A8%D7%99%20%D7%97%D7%93%D7%A8%D7%94&amp;output=embed" title="מפה - קניון שערי חדרה"></iframe>
+</div>
+</div>
+</section>
+
+</Base>

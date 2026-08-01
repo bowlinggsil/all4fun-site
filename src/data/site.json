@@ -1,0 +1,111 @@
+{
+  "name": "באולינג שערי חדרה",
+  "shortName": "All4Fun",
+  "url": "https://www.all4fun.co.il",
+  "phone": "04-6222575",
+  "phoneIntl": "+972-4-6222575",
+  "fax": "04-6222557",
+  "email": "all4fun@netvision.net.il",
+  "whatsapp": "972536402639",
+  "street": "רחוב פקיעין 1, קניון שערי חדרה",
+  "city": "חדרה",
+  "hours": [
+    {
+      "label": "ראשון–רביעי",
+      "value": "10:00–23:30"
+    },
+    {
+      "label": "חמישי–שבת",
+      "value": "10:00–24:00"
+    }
+  ],
+  "menuPdf": "/pdf/Menu102023.pdf",
+  "social": {
+    "facebook": "https://www.facebook.com/bowlinghadera",
+    "instagram": "https://www.instagram.com/bowlinghadera/"
+  },
+  "nav": [
+    {
+      "href": "/",
+      "label": "ראשי"
+    },
+    {
+      "href": "/about",
+      "label": "אודות"
+    },
+    {
+      "href": "/bar",
+      "label": "בר/מסעדה"
+    },
+    {
+      "href": "/birthdays",
+      "label": "ימי הולדת"
+    },
+    {
+      "label": "אירועים",
+      "children": [
+        {
+          "href": "#",
+          "label": "כל האירועים"
+        },
+        {
+          "href": "#",
+          "label": "ערבי גיבוש"
+        },
+        {
+          "href": "#",
+          "label": "אירועי חברה"
+        },
+        {
+          "href": "#",
+          "label": "כנסים"
+        }
+      ]
+    },
+    {
+      "label": "ליגות",
+      "children": [
+        {
+          "href": "#",
+          "label": "ליגת עמותה"
+        },
+        {
+          "href": "#",
+          "label": "מקומות עבודה"
+        },
+        {
+          "href": "#",
+          "label": "העמותה למשחקים מיוחדים"
+        },
+        {
+          "href": "#",
+          "label": "ליגות בית"
+        },
+        {
+          "href": "#",
+          "label": "ילדים"
+        },
+        {
+          "href": "#",
+          "label": "נוער"
+        },
+        {
+          "href": "#",
+          "label": "ליגת סניורים"
+        },
+        {
+          "href": "#",
+          "label": "ליגת יונפיינד"
+        }
+      ]
+    },
+    {
+      "href": "/classes",
+      "label": "חוגים"
+    },
+    {
+      "href": "/contact",
+      "label": "צור קשר"
+    }
+  ]
+}

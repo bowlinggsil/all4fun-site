@@ -1,0 +1,59 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="חוגי באולינג בחדרה | ילדים, נוער, בוגרים וצרכים מיוחדים"
+  description="הרשמה לחוגי באולינג בשערי חדרה: חוג ילדים, נוער, בוגרים, סניורים וחוג לבעלי צרכים מיוחדים. מתקיימים במתכונת שבועית."
+  path="/classes"
+>
+
+<section class="page-head" data-screen-label="כותרת עמוד">
+<div class="wrap">
+<p class="eyebrow">מרכז פנאי ובילוי</p>
+<h1>חוגים</h1>
+</div>
+</section>
+<section class="section" data-screen-label="חוגים והרשמה">
+<div class="wrap">
+<div class="grid grid--2">
+<div>
+<h2>חוגים ופעילויות</h2>
+<p class="lead">לילדים, נוער, בוגרים ולבעלי צרכים מיוחדים, בחסות ה"עמותה למשחקים מיוחדים". החוגים מתקיימים במתכונת שבועית, וכן פעילות שבועית קבועה למוסדות תמיכה בקהילה.</p>
+<p>לפרטים והרשמה ניתן להתקשר <a href="tel:+97246222575">04-6222575</a> או להשאיר פרטים בטופס.</p>
+<div class="figure" style="margin-top: 20px"><img alt="ילדים במיני באולינג" loading="lazy" src="/images/post3.jpg"/></div>
+</div>
+<form class="form-grid">
+<h3 style="margin: 0">הרשמה לחוגים</h3>
+<div>
+<label for="fullname">שם מלא</label>
+<input autocomplete="name" id="fullname" name="fullname" type="text"/>
+</div>
+<div>
+<label for="phone">טלפון</label>
+<input autocomplete="tel" id="phone" name="phone" type="tel"/>
+</div>
+<div>
+<label for="email">אימייל</label>
+<input autocomplete="email" id="email" name="email" type="email"/>
+</div>
+<div>
+<label for="hug">בחירת חוג</label>
+<select id="hug" name="hug">
+<option>ילדים</option>
+<option>נוער</option>
+<option>בוגרים</option>
+<option>בעלי צרכים מיוחדים</option>
+</select>
+</div>
+<div>
+<label for="msg">הערות</label>
+<textarea id="msg" name="msg" rows="4"></textarea>
+</div>
+<button class="btn" type="submit">שליחה</button>
+</form>
+</div>
+</div>
+</section>
+
+</Base>
