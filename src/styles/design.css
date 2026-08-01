@@ -105,7 +105,10 @@ h3 { font-size:1.65em; }
 .card img { aspect-ratio:4/3; object-fit:cover; width:100%; }
 .card-body { padding:20px 22px 24px; flex:1; display:flex; flex-direction:column; }
 .card-body p { margin:0 0 14px; }
-.card-body .btn { margin-top:auto; align-self:flex-start; }
+.card-body .btn { margin-top:auto; align-self:center; }
+/* כותרת וכפתור ממורכזים ברוחב הכרטיס. הטקסט עצמו נשאר
+   מיושר להתחלה, כי פסקה שלמה ממורכזת קשה יותר לקריאה. */
+.card-body h3 { text-align:center; }
 .lead { font-size:1.1em; color:var(--slate); max-width:75ch; }
 .section-head { margin-bottom:40px; }
 .section-head p { margin:0; }
@@ -115,7 +118,8 @@ h3 { font-size:1.65em; }
 .price { color:var(--blue); font-size:1.6em; font-weight:800; margin:0 0 14px; }
 .package ul { margin:0 0 20px; padding-inline-start:20px; }
 .package li { margin-bottom:6px; }
-.package .btn { margin-top:auto; align-self:flex-start; }
+.package .btn { margin-top:auto; align-self:center; }
+.package-body h3, .package-body .price { text-align:center; }
 .fineprint { font-size:.875em; color:var(--slate); }
 .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
 .gallery img { aspect-ratio:4/3; object-fit:cover; border-radius:var(--radius); }
