@@ -34,7 +34,7 @@ h3 { font-size:1.65em; }
 /* single cheap veil that fades out top and bottom - neighbouring sections blend softly */
 .section { position:relative; padding:80px 0; }
 .section--wash { background:transparent; }
-.topbar { background:var(--navy); color:#D8CCF6; font-size:.875em; padding:7px 0; }
+.topbar { background:var(--navy); color:#F8EF21; font-size:.875em; padding:7px 0; }
 .topbar .wrap { display:flex; flex-wrap:wrap; gap:8px 22px; align-items:center; }
 .topbar a { color:#F8EF21; }
 .topbar a:hover { color:var(--white); }
