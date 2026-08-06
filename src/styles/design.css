@@ -70,9 +70,9 @@ h3 { font-size:1.65em; }
 .slide h1, .slide h2 { color:var(--white); max-width:none; margin-bottom:.15em; font-size:clamp(2.6rem,6vw,6.4rem); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .slide p { color:#F0EAFE; font-size:clamp(1.05rem,1.25vw,1.6rem); line-height:1.55; max-width:none; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 @media (max-width: 700px) { .slide h1, .slide h2, .slide p { white-space:normal; } }
-.slide .eyebrow { display:inline-block; font-family:"Karantina","Open Sans",sans-serif; font-weight:400; color:#D7FF00; font-size:clamp(1.25rem,1.8vw,2rem); letter-spacing:.06em; margin-bottom:2px; }
+.slide .eyebrow { display:inline-block; font-family:"Karantina","Open Sans",sans-serif; font-weight:400; color:#F8EF21; font-size:clamp(1.25rem,1.8vw,2rem); letter-spacing:.06em; margin-bottom:2px; }
 .slide .btn { display:inline-block; margin-top:24px; }
-.hero-arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:3; background:none; border:0; cursor:pointer; color:#D7FF00; font-size:3rem; line-height:1; padding:10px 14px; }
+.hero-arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:3; background:none; border:0; cursor:pointer; color:#D8CCF6; font-size:3rem; line-height:1; padding:10px 14px; }
 .hero-arrow:hover { color:#fff; }
 .hero-arrow--prev { inset-inline-start:6px; }
 .hero-arrow--next { inset-inline-end:6px; }
@@ -83,14 +83,14 @@ h3 { font-size:1.65em; }
 }
 @media (max-width: 640px) { .slide .wrap { padding:0; padding-inline:56px; } .hero-arrow { font-size:2.2rem; } }
 .eyebrow { display:inline-block; margin-bottom:14px; color:var(--blue-light); font-weight:700; letter-spacing:.12em; font-size:.8em; }
-.btn { display:inline-block; padding:12px 30px; background:#D7FF00; color:#2E1065; border:2px solid #D7FF00; border-radius:40px; font-weight:800; font-size:1em; }
+.btn { display:inline-block; padding:12px 30px; background:#D8CCF6; color:#2E1065; border:2px solid #D8CCF6; border-radius:40px; font-weight:800; font-size:1em; }
 .btn:hover { background:#6D28D9; border-color:#6D28D9; color:#fff; text-decoration:none; }
 .btn--ghost { background:transparent; border-color:var(--white); }
 .btn--ghost:hover { background:var(--white); color:var(--navy); border-color:var(--white); }
 .slide-nav { position:absolute; inset-block-end:22px; inset-inline:0; display:flex; justify-content:center; gap:10px; z-index:2; }
 .slide-nav a { width:11px; height:11px; border-radius:50%; background:rgba(255,255,255,.45); display:block; }
 .slide-nav a:hover { background:var(--white); }
-.slide-nav a.active { background:#D7FF00; width:26px; border-radius:6px; }
+.slide-nav a.active { background:#D8CCF6; width:26px; border-radius:6px; }
 .page-head { background:var(--navy) url("/images/img2.jpg") center/cover; position:relative; padding:74px 0; }
 .page-head::before { content:""; position:absolute; inset:0; background:rgba(46,16,101,.85); }
 .page-head .wrap { position:relative; }
@@ -215,7 +215,7 @@ a.btn_accessibility ~ a.btn_accessibility { display: none !important; }
 .enlarge-btn:hover { background:#5B21B6; }
 .video-lightbox { position:fixed; inset:0; z-index:300; background:rgba(20,8,40,.93); display:grid; place-items:center; padding:28px; }
 .video-lightbox video { max-width:min(94vw,1400px); max-height:88vh; border-radius:8px; background:#000; }
-.lightbox-close { position:absolute; top:18px; inset-inline-end:22px; background:#D7FF00; color:#2E1065; border:0; width:44px; height:44px; border-radius:50%; font-size:1.2em; font-weight:800; cursor:pointer; z-index:2; }
+.lightbox-close { position:absolute; top:18px; inset-inline-end:22px; background:#F8EF21; color:#2E1065; border:0; width:44px; height:44px; border-radius:50%; font-size:1.2em; font-weight:800; cursor:pointer; z-index:2; }
 /* scroll bowling ball */
 .scroll-ball { position:fixed; right:14px; top:0; width:90px; height:90px; z-index:35; pointer-events:none; will-change:transform; filter:drop-shadow(0 12px 18px rgba(46,16,101,.35)); }
 .scroll-ball img { width:100%; height:100%; display:block; }
