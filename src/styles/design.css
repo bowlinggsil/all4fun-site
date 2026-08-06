@@ -1,5 +1,4 @@
-
-:root { --blue:#6D28D9; --blue-dark:#5B21B6; --navy:#2E1065; --blue-light:#D7FF00; --blue-wash:#F6F3FF; --slate:#6E6684; --ink:#444; --line:#E8E1F7; --white:#fff; --radius:10px; --shadow:0 2px 14px rgba(46,16,101,.10); --wrap:1180px; --header-h:87px; --bg-veil:.88; }
+:root { --blue:#6D28D9; --blue-dark:#5B21B6; --navy:#2E1065; --blue-light:#F8EF21; --blue-wash:#F6F3FF; --slate:#6E6684; --ink:#444; --line:#E8E1F7; --white:#fff; --radius:10px; --shadow:0 2px 14px rgba(46,16,101,.10); --wrap:1180px; --header-h:87px; --bg-veil:.88; }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; direction: rtl; scrollbar-width: none; -ms-overflow-style: none; }
 html::-webkit-scrollbar, body::-webkit-scrollbar { width: 0; height: 0; display: none; }
@@ -64,7 +63,7 @@ h3 { font-size:1.65em; }
 .slides { display:grid; grid-template-columns:minmax(0,100%); }
 .slide { grid-area:1/1; grid-template-columns:minmax(0,1fr); min-width:0; max-width:100%; opacity:0; transition:opacity 1.4s ease; pointer-events:none; min-height:calc(100vh - var(--header-h)); display:grid; align-content:end; padding:40px 0 84px; background-size:cover; background-position:center; position:relative; }
 .slide.active { opacity:1; pointer-events:auto; }
-.slide::before { content:""; position:absolute; inset:0; background:linear-gradient(10deg, rgba(35,9,63,.96) 0%, rgba(109,40,217,.72) 45%, rgba(109,40,217,.15) 78%, rgba(215,255,0,.12) 100%); }
+.slide::before { content:""; position:absolute; inset:0; background:linear-gradient(10deg, rgba(35,9,63,.96) 0%, rgba(109,40,217,.72) 45%, rgba(109,40,217,.15) 78%, rgba(248,239,33,.12) 100%); }
 .slide::after { content:""; position:absolute; inset:0; background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/></svg>"); opacity:.18; mix-blend-mode:overlay; pointer-events:none; }
 .slide .wrap { position:relative; z-index:2; background:transparent; padding:0; padding-inline:clamp(76px,8vw,120px); max-width:100%; min-width:0; width:100%; margin-inline:auto; }
 .slide h1, .slide h2 { color:var(--white); max-width:none; margin-bottom:.15em; font-size:clamp(2.6rem,6vw,6.4rem); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
