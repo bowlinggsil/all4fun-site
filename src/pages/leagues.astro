@@ -1,0 +1,47 @@
+---
+import Base from "../layouts/Base.astro";
+import site from "../data/site.json";
+
+/* רשימת הליגות נגזרת מתפריט הניווט ב-site.json, כך שפריט בתפריט
+   והעוגן שלו בעמוד הזה תמיד מסונכרנים. הפסקה למטה היא כל מה
+   שהאתר הישן אמר על הליגות - ולכן אין תיאור נפרד לכל ליגה,
+   חוץ מליגת יונפיינד שהוסברה שם במפורש. */
+const leagues = site.nav
+  .find((n) => n.label === "ליגות")
+  .children.filter((c) => c.href.startsWith("/leagues#"))
+  .map((c) => ({ id: c.href.split("#")[1], label: c.label }));
+const whatsapp = "https://api.whatsapp.com/send?phone=" + site.whatsapp;
+---
+
+<Base
+  title="ליגות באולינג בשערי חדרה | ליגות בית, נוער, סניורים ומקומות עבודה"
+  description="ליגות באולינג בשערי חדרה: ליגת הבית, ליגת נוער, ליגת סניורים, ליגה למקומות עבודה, ליגות לאוכלוסייה עם מוגבלויות וליגת יונפיינד. פרטים והצטרפות."
+  path="/leagues"
+>
+
+<section class="page-head page-head--leagues">
+<div class="wrap">
+<p class="eyebrow">מרכז פנאי ובילוי</p>
+<h1>ליגות</h1>
+<p>ליגות מקצועיות וליגות בית</p>
+</div>
+</section>
+<section class="section">
+<div class="wrap">
+<div class="grid grid--2">
+<div>
+<h2>ליגות מקצועיות וליגות בית</h2>
+<p class="lead">ליגת הבית, ליגת נוער, ליגת סניורים, ליגה למקומות עבודה, ליגות לאוכלוסייה עם מוגבלויות בכל הרמות - ילדים, נוער ובוגרים. ליגת יונפיינד - שילוב של שחקני נבחרת ושחקן עם צרכים מיוחדים. כמו כן תחרויות מקומיות, אזוריות, ארציות ובין-לאומיות.</p>
+<p>לפרטים והצטרפות לליגה: טלפון <a href={"tel:" + site.phoneIntl.replace(/-/g, "")}>{site.phone}</a> או <a href={whatsapp} rel="noopener">הודעה בוואטסאפ</a>.</p>
+<p><a class="btn" href="/contact">צרו קשר</a></p>
+</div>
+<ul class="info-list">
+{leagues.map((l) => (
+  <li id={l.id}><strong>{l.label}</strong>{l.id === "unified" && "שילוב של שחקני נבחרת ושחקן עם צרכים מיוחדים"}</li>
+))}
+</ul>
+</div>
+</div>
+</section>
+
+</Base>

@@ -298,3 +298,7 @@ a.btn_accessibility ~ a.btn_accessibility { display: none !important; }
 .page-head--birthdays { background-image: url("/images/huledtMain.jpg"); }
 .page-head--bar       { background-image: url("/images/resMain.jpg"); }
 .page-head--about     { background-image: url("/images/about.jpg"); }
+.page-head--leagues   { background-image: url("/images/slide/slide-44.jpg"); }
+
+/* עוגנים (ליגות, תפריטי אירועים): ההדר קבוע ומסתיר את היעד בלעדיו */
+[id] { scroll-margin-top: calc(var(--header-h) + 20px); }

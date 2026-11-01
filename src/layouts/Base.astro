@@ -42,6 +42,12 @@ const schema = {
   ],
   sameAs: [site.social.facebook, site.social.instagram],
 };
+
+/* הצטרפות למועדון הלקוחות: באתר הישן היה שדה מייל שלא חובר לכלום.
+   כאן הכפתור פותח וואטסאפ עם הודעה מוכנה - עובד בלי שרת. */
+const clubUrl =
+  "https://api.whatsapp.com/send?phone=" + site.whatsapp +
+  "&text=" + encodeURIComponent("שלום, אשמח להצטרף למועדון הלקוחות של באולינג שערי חדרה");
 ---
 
 <!doctype html>
@@ -215,14 +221,13 @@ const schema = {
           </div>
 
           <div>
-            <h3>אירועים</h3>
+            <h3>אירועים וליגות</h3>
             <ul>
-              <li><a href="/events">אירועי חברה</a></li>
               <li><a href="/events">ערבי גיבוש</a></li>
-              <li><a href="#">אירועי בר/בת מצווה</a></li>
-              <li><a href="#">מסיבות רווקים</a></li>
-              <li><a href="#">חתונות</a></li>
+              <li><a href="/events">אירועי חברה</a></li>
               <li><a href="/events">כנסים</a></li>
+              <li><a href="/events#menus">תפריטי אירועים וגיבושים</a></li>
+              <li><a href="/leagues">ליגות</a></li>
             </ul>
           </div>
 
@@ -235,6 +240,9 @@ const schema = {
             <ul>
               <li><a href={site.menuPdf}>צפייה בתפריט</a></li>
             </ul>
+            <h3 style="margin-top:22px">מועדון לקוחות</h3>
+            <p>הצטרפו למועדון הלקוחות של באולינג חדרה ותהנו משפע של מבצעים.</p>
+            <a class="btn" href={clubUrl} rel="noopener">להצטרפות</a>
           </div>
         </div>
 

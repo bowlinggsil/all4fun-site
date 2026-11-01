@@ -49,35 +49,39 @@
       "label": "ליגות",
       "children": [
         {
-          "href": "#",
+          "href": "/leagues",
+          "label": "כל הליגות"
+        },
+        {
+          "href": "/leagues#amuta",
           "label": "ליגת עמותה"
         },
         {
-          "href": "#",
+          "href": "/leagues#work",
           "label": "מקומות עבודה"
         },
         {
-          "href": "#",
+          "href": "/leagues#special",
           "label": "העמותה למשחקים מיוחדים"
         },
         {
-          "href": "#",
+          "href": "/leagues#home",
           "label": "ליגות בית"
         },
         {
-          "href": "#",
+          "href": "/leagues#kids",
           "label": "ילדים"
         },
         {
-          "href": "#",
+          "href": "/leagues#teens",
           "label": "נוער"
         },
         {
-          "href": "#",
+          "href": "/leagues#seniors",
           "label": "ליגת סניורים"
         },
         {
-          "href": "#",
+          "href": "/leagues#unified",
           "label": "ליגת יונפיינד"
         }
       ]

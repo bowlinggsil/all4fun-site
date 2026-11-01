@@ -1,5 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
+import site from "../data/site.json";
+const clubUrl =
+  "https://api.whatsapp.com/send?phone=" + site.whatsapp +
+  "&text=" + encodeURIComponent("שלום, אשמח להצטרף למועדון הלקוחות של באולינג שערי חדרה");
 ---
 
 <Base
@@ -10,7 +14,7 @@ import Base from "../layouts/Base.astro";
 
 <section class="hero">
 <div class="slides">
-<article class="slide" id="slide1" style="background-image: url('/images/img2.jpg')">
+<article class="slide" id="slide1" style="background-image: url('/images/slide/slide-44.jpg')">
 <div class="wrap">
 <p class="eyebrow">מרכז פנאי ובילוי</p>
 <h1>ברוכים הבאים לבאולינג שערי חדרה</h1>
@@ -18,7 +22,7 @@ import Base from "../layouts/Base.astro";
 <a class="btn" href="/about">קראו עוד</a>
 </div>
 </article>
-<article class="slide" id="slide2" style="background-image: url('/images/club.jpg')">
+<article class="slide" id="slide2" style="background-image: url('/images/slide/slide-77.jpg')">
 <div class="wrap">
 <p class="eyebrow">מרכז פנאי ובילוי</p>
 <h2>אירועים פרטיים, לחברות ומוסדות</h2>
@@ -26,7 +30,7 @@ import Base from "../layouts/Base.astro";
 <a class="btn" href="/contact">לפרטים והזמנה</a>
 </div>
 </article>
-<article class="slide" id="slide3" style="background-image: url('/images/post3.jpg')">
+<article class="slide" id="slide3" style="background-image: url('/images/slide/slide-99.jpg')">
 <div class="wrap">
 <p class="eyebrow">מרכז פנאי ובילוי</p>
 <h2>מיני באולינג - חוויה מהנה לילדים</h2>
@@ -34,15 +38,15 @@ import Base from "../layouts/Base.astro";
 <a class="btn" href="/birthdays">לימי הולדת</a>
 </div>
 </article>
-<article class="slide" id="slide4" style="background-image: url('/images/hobby.jpg')">
+<article class="slide" id="slide4" style="background-image: url('/images/slide/slide-11.jpg')">
 <div class="wrap">
 <p class="eyebrow">מרכז פנאי ובילוי</p>
 <h2>ליגות מקצועיות וליגות בית</h2>
 <p>ליגת הבית, ליגת נוער, ליגת סניורים, ליגה למקומות עבודה, ליגות לאוכלוסייה עם מוגבלויות בכל הרמות - ילדים, נוער ובוגרים.</p>
-<a class="btn" href="/about">על הליגות</a>
+<a class="btn" href="/leagues">על הליגות</a>
 </div>
 </article>
-<article class="slide" id="slide5" style="background-image: url('/images/birth.jpg')">
+<article class="slide" id="slide5" style="background-image: url('/images/slide/slide-55.jpg')">
 <div class="wrap">
 <p class="eyebrow">מרכז פנאי ובילוי</p>
 <h2>ימי הולדת ומסיבות הפתעה</h2>
@@ -50,7 +54,7 @@ import Base from "../layouts/Base.astro";
 <a class="btn" href="/birthdays">לחבילות ימי הולדת</a>
 </div>
 </article>
-<article class="slide" id="slide6" style="background-image: url('/images/gamesMachine.jpg')">
+<article class="slide" id="slide6" style="background-image: url('/images/slide/slide-10.jpg')">
 <div class="wrap">
 <p class="eyebrow">מרכז פנאי ובילוי</p>
 <h2>חוגים ופעילויות</h2>
@@ -87,14 +91,15 @@ import Base from "../layouts/Base.astro";
 <img alt="ליגות" loading="lazy" src="/images/img2.jpg"/>
 <div>
 <h3>ליגות</h3>
-<p>ליגת הבית, ליגת נוער, ליגת סניורים, ליגה למקומות עבודה וליגות לאוכלוסייה עם מוגבלויות בכל הרמות - ילדים, נוער ובוגרים.</p>
+<p>ליגת הבית, ליגת נוער, ליגת סניורים, ליגה למקומות עבודה וליגות לאוכלוסייה עם מוגבלויות בכל הרמות - ילדים, נוער ובוגרים. ליגת יונפיינד - שילוב של שחקני נבחרת ושחקן עם צרכים מיוחדים. כמו כן תחרויות מקומיות, אזוריות, ארציות ובין-לאומיות. <a href="/leagues">לכל הליגות</a></p>
 </div>
 </div>
 <div class="mini-feature">
 <img alt="חוגים" loading="lazy" src="/images/img2.jpg"/>
 <div>
 <h3>חוגים</h3>
-<p>לילדים, נוער, בוגרים ולבעלי צרכים מיוחדים, בחסות ה"עמותה למשחקים מיוחדים". החוגים מתקיימים במתכונת שבועית.</p>
+<p>לילדים, נוער, בוגרים ולבעלי צרכים מיוחדים, בחסות ה"עמותה למשחקים מיוחדים". החוגים מתקיימים במתכונת שבועית. כמו כן מתקיימת פעילות שבועית קבועה למוסדות תמיכה לקהילה מוגבלת.</p>
+<p style="margin-top:8px">לרישום וקבלת פרטים לחוג עבור אנשים עם צרכים מיוחדים: <a href="mailto:reuvensd@soi.org.il">reuvensd@soi.org.il</a></p>
 </div>
 </div>
 <div class="media-block">
@@ -161,6 +166,14 @@ import Base from "../layouts/Base.astro";
 </div>
 </article>
 </div>
+<div class="mini-feature" style="margin-top:34px">
+<img alt="מועדון לקוחות" loading="lazy" src="/images/club.jpg"/>
+<div>
+<h3>מועדון לקוחות</h3>
+<p>אפשרות להצטרף למועדון ATB המקנה שלל הנחות ומבצעים.</p>
+<p style="margin-top:12px"><a class="btn" href={clubUrl} rel="noopener">להצטרפות למועדון</a></p>
+</div>
+</div>
 </div>
 </section>
 <section class="section">
@@ -170,7 +183,7 @@ import Base from "../layouts/Base.astro";
 <p class="lead">מקום נוח ונעים לקפה, ארוחות קלות וארוחות משפחתיות בשילוב מסלולי הבאולינג מסביב.</p>
 </div>
 <div class="gallery"><a href="/images/res1.jpg"><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res1.jpg"/></a><a href="/images/res2.jpg"><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res2.jpg"/></a><a href="/images/res3.jpg"><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res3.jpg"/></a><a href="/images/res4.jpg"><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res4.jpg"/></a><a href="/images/res5.jpg"><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res5.jpg"/></a></div>
-<p style="margin-top: 26px; text-align: center"><a class="btn" href="/pdf/Menu102023.pdf">צפייה בתפריט המלא</a></p>
+<p style="margin-top: 26px; text-align: center"><a class="btn" href="/pdf/Menu102023.pdf">צפייה בתפריט המלא</a> <a class="btn" href="/events#menus">תפריטי אירועים וגיבושים</a></p>
 </div>
 </section>
 

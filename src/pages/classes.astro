@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import site from "../data/site.json";
 ---
 
 <Base
@@ -20,18 +21,26 @@ import Base from "../layouts/Base.astro";
 <div>
 <h2>חוגים ופעילויות</h2>
 <p class="lead">לילדים, נוער, בוגרים ולבעלי צרכים מיוחדים, בחסות ה"עמותה למשחקים מיוחדים". החוגים מתקיימים במתכונת שבועית, וכן פעילות שבועית קבועה למוסדות תמיכה בקהילה.</p>
-<p>לפרטים והרשמה ניתן להתקשר <a href="tel:+97246222575">04-6222575</a> או להשאיר פרטים בטופס.</p>
+<p>לרישום וקבלת פרטים לחוג עבור אנשים עם צרכים מיוחדים: <a href="mailto:reuvensd@soi.org.il">reuvensd@soi.org.il</a></p>
+<p>לפרטים והרשמה ניתן להתקשר <a href={"tel:" + site.phoneIntl.replace(/-/g, "")}>{site.phone}</a> או להשאיר פרטים בטופס.</p>
+<ul class="info-list" style="margin-top: 20px">
+<li><strong>כתובת</strong>{site.street}</li>
+<li><strong>אימייל</strong><a href={"mailto:" + site.email}>{site.email}</a></li>
+<li><strong>וואטסאפ</strong><a href={"https://api.whatsapp.com/send?phone=" + site.whatsapp} rel="noopener">שליחת הודעה בוואטסאפ</a></li>
+<li><strong>טלפון</strong><a href={"tel:" + site.phoneIntl.replace(/-/g, "")}>{site.phone}</a></li>
+<li><strong>פקס</strong>{site.fax}</li>
+</ul>
 <div class="figure" style="margin-top: 20px"><img alt="ילדים במיני באולינג" loading="lazy" src="/images/post3.jpg"/></div>
 </div>
-<form class="form-grid">
+<form class="form-grid" data-whatsapp={site.whatsapp} data-subject="הרשמה לחוגים מהאתר">
 <h3 style="margin: 0">הרשמה לחוגים</h3>
 <div>
 <label for="fullname">שם מלא</label>
-<input autocomplete="name" id="fullname" name="fullname" type="text"/>
+<input autocomplete="name" id="fullname" name="fullname" type="text" required/>
 </div>
 <div>
 <label for="phone">טלפון</label>
-<input autocomplete="tel" id="phone" name="phone" type="tel"/>
+<input autocomplete="tel" id="phone" name="phone" type="tel" required/>
 </div>
 <div>
 <label for="email">אימייל</label>
@@ -40,17 +49,19 @@ import Base from "../layouts/Base.astro";
 <div>
 <label for="hug">בחירת חוג</label>
 <select id="hug" name="hug">
-<option>ילדים</option>
-<option>נוער</option>
-<option>בוגרים</option>
-<option>בעלי צרכים מיוחדים</option>
+<option>חוג ילדים</option>
+<option>חוג נוער</option>
+<option>חוג בוגרים</option>
+<option>סניורים</option>
+<option>חוג בעלי צרכים מיוחדים</option>
 </select>
 </div>
 <div>
 <label for="msg">הערות</label>
 <textarea id="msg" name="msg" rows="4"></textarea>
 </div>
-<button class="btn" type="submit">שליחה</button>
+<button class="btn" type="submit">הרשמה בוואטסאפ</button>
+<p class="fineprint" style="margin: 0">הלחיצה פותחת את וואטסאפ עם הפרטים שמילאתם. אפשר גם במייל: <a href={"mailto:" + site.email}>{site.email}</a></p>
 </form>
 </div>
 </div>

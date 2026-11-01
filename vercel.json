@@ -4,12 +4,24 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/default.asp",  "destination": "/",          "permanent": true },
+    { "source": "/Default.asp",  "destination": "/",          "permanent": true },
     { "source": "/about.asp",    "destination": "/about",     "permanent": true },
     { "source": "/birthDay.asp", "destination": "/birthdays", "permanent": true },
+    { "source": "/birthday.asp", "destination": "/birthdays", "permanent": true },
     { "source": "/bar.asp",      "destination": "/bar",       "permanent": true },
     { "source": "/hobby.asp",    "destination": "/classes",   "permanent": true },
     { "source": "/contact.asp",  "destination": "/contact",   "permanent": true },
-    { "source": "/Menu102023.pdf", "destination": "/pdf/Menu102023.pdf", "permanent": true }
+    { "source": "/Menu102023.pdf", "destination": "/pdf/Menu102023.pdf", "permanent": true },
+    { "source": "/images/5_7_2026.pdf",          "destination": "/pdf/5_7_2026.pdf",          "permanent": true },
+    { "source": "/images/8_11_2026.pdf",         "destination": "/pdf/8_11_2026.pdf",         "permanent": true },
+    { "source": "/images/noar2026.pdf",          "destination": "/pdf/noar2026.pdf",          "permanent": true },
+    { "source": "/images/gibush2026.pdf",        "destination": "/pdf/gibush2026.pdf",        "permanent": true },
+    { "source": "/images/optionA.pdf",           "destination": "/pdf/optionA.pdf",           "permanent": true },
+    { "source": "/images/optionB.pdf",           "destination": "/pdf/optionB.pdf",           "permanent": true },
+    { "source": "/images/optionC.pdf",           "destination": "/pdf/optionC.pdf",           "permanent": true },
+    { "source": "/images/nishnush2026.pdf",      "destination": "/pdf/nishnush2026.pdf",      "permanent": true },
+    { "source": "/images/nishnushHalavi2026.pdf", "destination": "/pdf/nishnushHalavi2026.pdf", "permanent": true },
+    { "source": "/images/branch2026.pdf",        "destination": "/pdf/branch2026.pdf",        "permanent": true }
   ],
   "headers": [
     { "source": "/images/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },

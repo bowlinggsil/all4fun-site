@@ -332,4 +332,51 @@
     ball.style.display = "none";
     if (cam) cam.style.display = "none";
   }
+
+  /* ---------- 6. טפסים (צור קשר, הרשמה לחוגים) ----------
+     האתר סטטי ואין שרת שיקבל את הטופס. במקום שירות טפסים חיצוני,
+     השליחה מרכיבה הודעה מהשדות שמולאו ופותחת אותה בוואטסאפ של המקום
+     (אותו מספר כמו הכפתור הצף; מגיע מ-site.json דרך data-whatsapp).
+     הדפדפן בודק את השדות המסומנים required לפני שמגיעים לכאן. */
+  document.querySelectorAll("form[data-whatsapp]").forEach(function (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var lines = [form.getAttribute("data-subject") || "פנייה מהאתר"];
+      form.querySelectorAll("input, select, textarea").forEach(function (f) {
+        var v = f.value.trim();
+        if (!v) return;
+        var label = form.querySelector('label[for="' + f.id + '"]');
+        lines.push((label ? label.textContent.trim() : f.name) + ": " + v);
+      });
+      window.open(
+        "https://api.whatsapp.com/send?phone=" + form.getAttribute("data-whatsapp") +
+          "&text=" + encodeURIComponent(lines.join("\n")),
+        "_blank",
+        "noopener"
+      );
+    });
+  });
+
+  /* ---------- 7. גלילה לעוגן בכניסה לעמוד ----------
+     קישורים כמו /leagues#seniors או /events#menus. הגלילה האוטומטית
+     של הדפדפן לעוגן מתבטלת לפעמים: scroll-behavior: smooth הופך אותה
+     לאנימציה, ושינוי גובה ההדר אחרי טעינת הגופנים (סעיף 0) קוטע אותה
+     באמצע. לכן גוללים שוב, מיידית, אחרי שהכל נטען והתייצב.
+     ההיסט מההדר הקבוע מגיע מ-scroll-margin-top ב-CSS. */
+  function jumpToHash() {
+    var target = location.hash && document.getElementById(location.hash.slice(1));
+    if (target) target.scrollIntoView({ behavior: "instant", block: "start" });
+  }
+  window.addEventListener("load", function () {
+    jumpToHash();
+    /* ווידג'ט הנגישות, במסך צר, גולל לראש העמוד כשהוא עולה - וזה קורה
+       אחרי load. אם הגלילה אופסה בשניות הראשונות, קופצים שוב לעוגן.
+       ponytail: בדיקה בטיימר ולא האזנה לווידג'ט - הקוד שלו חיצוני ומשתנה. */
+    var tries = 0;
+    var watch = setInterval(function () {
+      if (++tries > 12) return clearInterval(watch);
+      if (location.hash && window.scrollY === 0) jumpToHash();
+    }, 150);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(jumpToHash);
 })();
