@@ -17,7 +17,7 @@ const events = [
   {
     title: "כנסים",
     image: "/images/resMain.jpg",
-    text: "מקום נוח ונעים לקפה, ארוחות קלות וארוחות משפחתיות בשילוב מסלולי הבאולינג מסביב.",
+    text: "אולם עד 100 איש בשילוב מסלולי באולינג נפרדים, עם ארוחות מהמסעדה או שף צמוד לתפריט יוקרתי.",
   },
 ];
 
@@ -83,7 +83,7 @@ const menus = [
               {m.image && <img src={m.image} alt={m.title} loading="lazy" />}
               <div class="card-body">
                 <h3>{m.title}</h3>
-                <a class="btn" href={m.pdf}>צפייה בתפריט</a>
+                <a class="btn" href={m.pdf} target="_blank" rel="noopener">צפייה בתפריט (PDF)</a>
               </div>
             </article>
           ))

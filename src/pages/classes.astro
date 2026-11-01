@@ -30,16 +30,16 @@ import site from "../data/site.json";
 <li><strong>טלפון</strong><a href={"tel:" + site.phoneIntl.replace(/-/g, "")}>{site.phone}</a></li>
 <li><strong>פקס</strong>{site.fax}</li>
 </ul>
-<div class="figure" style="margin-top: 20px"><img alt="ילדים במיני באולינג" loading="lazy" src="/images/post3.jpg"/></div>
+<div class="figure" style="margin-top: 20px"><img alt="ילדים במיני באולינג" loading="lazy" src="/images/post3.jpg" width="300" height="190"/></div>
 </div>
 <form class="form-grid" data-whatsapp={site.whatsapp} data-subject="הרשמה לחוגים מהאתר">
 <h3 style="margin: 0">הרשמה לחוגים</h3>
 <div>
-<label for="fullname">שם מלא</label>
+<label for="fullname">שם מלא *</label>
 <input autocomplete="name" id="fullname" name="fullname" type="text" required/>
 </div>
 <div>
-<label for="phone">טלפון</label>
+<label for="phone">טלפון *</label>
 <input autocomplete="tel" id="phone" name="phone" type="tel" required/>
 </div>
 <div>
@@ -61,7 +61,7 @@ import site from "../data/site.json";
 <textarea id="msg" name="msg" rows="4"></textarea>
 </div>
 <button class="btn" type="submit">הרשמה בוואטסאפ</button>
-<p class="fineprint" style="margin: 0">הלחיצה פותחת את וואטסאפ עם הפרטים שמילאתם. אפשר גם במייל: <a href={"mailto:" + site.email}>{site.email}</a></p>
+<p class="fineprint" style="margin: 0">שדות עם * הם חובה. הלחיצה פותחת את וואטסאפ עם הפרטים שמילאתם. אפשר גם במייל: <a href={"mailto:" + site.email}>{site.email}</a></p>
 </form>
 </div>
 </div>

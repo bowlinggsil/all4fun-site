@@ -22,7 +22,7 @@ const clubUrl =
 <a class="btn" href="/about">קראו עוד</a>
 </div>
 </article>
-<article class="slide" id="slide2" style="background-image: url('/images/slide/slide-77.jpg')">
+<article class="slide" id="slide2" data-bg="/images/slide/slide-77.jpg">
 <div class="wrap">
 <p class="eyebrow">מרכז פנאי ובילוי</p>
 <h2>אירועים פרטיים, לחברות ומוסדות</h2>
@@ -30,7 +30,7 @@ const clubUrl =
 <a class="btn" href="/contact">לפרטים והזמנה</a>
 </div>
 </article>
-<article class="slide" id="slide3" style="background-image: url('/images/slide/slide-99.jpg')">
+<article class="slide" id="slide3" data-bg="/images/slide/slide-99.jpg">
 <div class="wrap">
 <p class="eyebrow">מרכז פנאי ובילוי</p>
 <h2>מיני באולינג - חוויה מהנה לילדים</h2>
@@ -38,7 +38,7 @@ const clubUrl =
 <a class="btn" href="/birthdays">לימי הולדת</a>
 </div>
 </article>
-<article class="slide" id="slide4" style="background-image: url('/images/slide/slide-11.jpg')">
+<article class="slide" id="slide4" data-bg="/images/slide/slide-11.jpg">
 <div class="wrap">
 <p class="eyebrow">מרכז פנאי ובילוי</p>
 <h2>ליגות מקצועיות וליגות בית</h2>
@@ -46,7 +46,7 @@ const clubUrl =
 <a class="btn" href="/leagues">על הליגות</a>
 </div>
 </article>
-<article class="slide" id="slide5" style="background-image: url('/images/slide/slide-55.jpg')">
+<article class="slide" id="slide5" data-bg="/images/slide/slide-55.jpg">
 <div class="wrap">
 <p class="eyebrow">מרכז פנאי ובילוי</p>
 <h2>ימי הולדת ומסיבות הפתעה</h2>
@@ -54,7 +54,7 @@ const clubUrl =
 <a class="btn" href="/birthdays">לחבילות ימי הולדת</a>
 </div>
 </article>
-<article class="slide" id="slide6" style="background-image: url('/images/slide/slide-10.jpg')">
+<article class="slide" id="slide6" data-bg="/images/slide/slide-10.jpg">
 <div class="wrap">
 <p class="eyebrow">מרכז פנאי ובילוי</p>
 <h2>חוגים ופעילויות</h2>
@@ -63,8 +63,8 @@ const clubUrl =
 </div>
 </article>
 </div>
-<button aria-label="הקודם" class="hero-arrow hero-arrow--prev" onclick="&#123;&#123; prevSlide &#125;&#125;">‹</button>
-<button aria-label="הבא" class="hero-arrow hero-arrow--next" onclick="&#123;&#123; nextSlide &#125;&#125;">›</button>
+<button aria-label="הקודם" class="hero-arrow hero-arrow--prev slide-prev" type="button">‹</button>
+<button aria-label="הבא" class="hero-arrow hero-arrow--next slide-next" type="button">›</button>
 <div class="slide-nav"><a aria-label="מעבר לשקופית 1" href="#slide1"></a><a aria-label="מעבר לשקופית 2" href="#slide2"></a><a aria-label="מעבר לשקופית 3" href="#slide3"></a><a aria-label="מעבר לשקופית 4" href="#slide4"></a><a aria-label="מעבר לשקופית 5" href="#slide5"></a><a aria-label="מעבר לשקופית 6" href="#slide6"></a></div>
 </section>
 <section class="section">
@@ -73,10 +73,10 @@ const clubUrl =
 <div class="about-media">
 <div class="media-block">
 <h3>"סטרייק בעיניים עצומות" - הכתבה עלינו</h3>
-<video controls="controls" poster="/images/videoframe_487.png" preload="metadata"><source src="/assets/article.mp4" type="video/mp4">הדפדפן שלך לא תומך בתג וידאו.</source></video></div>
+<video controls="controls" poster="/images/videoframe_487.jpg" preload="metadata"><source src="/assets/article.mp4" type="video/mp4">הדפדפן שלך לא תומך בתג וידאו.</source></video></div>
 <div class="media-block">
 <h3>סיור וירטואלי במתחם</h3>
-<video class="video-portrait" controls="controls" poster="/images/videoframe_0.png" preload="metadata"><source src="/assets/tour.mp4" type="video/mp4">הדפדפן שלך לא תומך בתג וידאו.</source></video></div>
+<video class="video-portrait" controls="controls" poster="/images/videoframe_0.jpg" preload="metadata"><source src="/assets/tour.mp4" type="video/mp4">הדפדפן שלך לא תומך בתג וידאו.</source></video></div>
 </div>
 <div class="about-text">
 <div class="media-block">
@@ -130,7 +130,6 @@ const clubUrl =
 <div class="card-body">
 <h3>מסלולים לילדים</h3>
 <p>מיני באולינג: 6 מסלולים חדשים המותאמים לגיל צעיר (3 שנים) ומהווים חוויה לכל המשפחה - כדורים קטנים וקלים, מסלול קצר.</p>
-<a class="btn" href="/about">קראו עוד</a>
 </div>
 </article>
 <article class="card">
@@ -138,7 +137,6 @@ const clubUrl =
 <div class="card-body">
 <h3>משחקים ואטרקציות לילדים</h3>
 <p>חדר הקרנות עם שישה מושבים להקרנת מגוון רחב של סרטונים לחוויית תלת ממד, החל מסרטים לילדים ועד לסרטי אימה למבוגרים. אולם משחקי ארקדיה: משחקי אלקטרוניקה הכוללים שלל משחקים חדישים.</p>
-<a class="btn" href="/about">קראו עוד</a>
 </div>
 </article>
 <article class="card">
@@ -182,8 +180,8 @@ const clubUrl =
 <h2>בר/מסעדה - חוויה של טעמים</h2>
 <p class="lead">מקום נוח ונעים לקפה, ארוחות קלות וארוחות משפחתיות בשילוב מסלולי הבאולינג מסביב.</p>
 </div>
-<div class="gallery"><a href="/images/res1.jpg"><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res1.jpg"/></a><a href="/images/res2.jpg"><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res2.jpg"/></a><a href="/images/res3.jpg"><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res3.jpg"/></a><a href="/images/res4.jpg"><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res4.jpg"/></a><a href="/images/res5.jpg"><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res5.jpg"/></a></div>
-<p style="margin-top: 26px; text-align: center"><a class="btn" href="/pdf/Menu102023.pdf">צפייה בתפריט המלא</a> <a class="btn" href="/events#menus">תפריטי אירועים וגיבושים</a></p>
+<div class="gallery"><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res1.jpg"/><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res2.jpg"/><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res3.jpg"/><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res4.jpg"/><img alt="מהמסעדה והבר של באולינג שערי חדרה" loading="lazy" src="/images/res5.jpg"/></div>
+<p style="margin-top: 26px; text-align: center"><a class="btn" href="/pdf/Menu102023.pdf" target="_blank" rel="noopener">צפייה בתפריט המלא (PDF)</a> <a class="btn" href="/events#menus">תפריטי אירועים וגיבושים</a></p>
 </div>
 </section>
 

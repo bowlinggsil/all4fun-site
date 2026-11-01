@@ -52,6 +52,18 @@
       var open = nav.classList.toggle("open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
+    function closeNav() {
+      if (!nav.classList.contains("open")) return;
+      nav.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    /* Escape סוגר, ולחיצה על קישור (גם עוגן באותו עמוד) סוגרת */
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("open")) { closeNav(); toggle.focus(); }
+    });
+    nav.addEventListener("click", function (e) {
+      if (e.target.closest("a")) closeNav();
+    });
   }
 
   /* ---------- 2. תפריטים נפתחים ----------
@@ -84,6 +96,14 @@
       idx = ((i % n) + n) % n;
       Array.prototype.forEach.call(slidesWrap.children, function (s, k) {
         s.classList.toggle("active", k === idx);
+        /* שקופית לא פעילה שקופה אבל עדיין בעץ הנגישות ובסדר הטאב -
+           inert מוציא אותה משניהם, אחרת המקלדת נתקעת על כפתורים נסתרים. */
+        s.toggleAttribute("inert", k !== idx);
+        /* תמונות הרקע של שקופיות 2-6 יושבות ב-data-bg ונטענות רק כשהשקופית
+           (או הבאה בתור) מגיעה - חוסך יותר ממגה בטעינה הראשונה. */
+        if ((k === idx || k === (idx + 1) % n) && s.dataset.bg && !s.style.backgroundImage) {
+          s.style.backgroundImage = "url('" + s.dataset.bg + "')";
+        }
       });
       dots.forEach(function (d, k) {
         d.classList.toggle("active", k === idx);
@@ -94,6 +114,9 @@
       clearInterval(timer);
       if (!reduced) timer = setInterval(function () { goTo(idx + 1); }, 5000);
     }
+    /* ברגע שהמשתמש בחר שקופית בעצמו, ההחלפה האוטומטית נפסקת -
+       אחרת הטקסט שהוא קורא מתחלף לו מתחת לעיניים אחרי 5 שניות. */
+    function stop() { clearInterval(timer); }
 
     goTo(0);
     restart();
@@ -103,13 +126,13 @@
       if (dot) {
         e.preventDefault();
         goTo(Array.prototype.indexOf.call(dot.parentElement.children, dot));
-        restart();
+        stop();
         return;
       }
       var prev = e.target.closest(".slide-prev");
-      if (prev) { e.preventDefault(); goTo(idx - 1); restart(); return; }
+      if (prev) { e.preventDefault(); goTo(idx - 1); stop(); return; }
       var next = e.target.closest(".slide-next");
-      if (next) { e.preventDefault(); goTo(idx + 1); restart(); }
+      if (next) { e.preventDefault(); goTo(idx + 1); stop(); }
     });
 
     /* גובה השקופיות מטופל ב-CSS דרך --header-h שנקבע למעלה.
@@ -338,7 +361,19 @@
      השליחה מרכיבה הודעה מהשדות שמולאו ופותחת אותה בוואטסאפ של המקום
      (אותו מספר כמו הכפתור הצף; מגיע מ-site.json דרך data-whatsapp).
      הדפדפן בודק את השדות המסומנים required לפני שמגיעים לכאן. */
+  var params = new URLSearchParams(location.search);
   document.querySelectorAll("form[data-whatsapp]").forEach(function (form) {
+    /* קישורים כמו /contact?subject=יום הולדת&msg=... (מכרטיסי החבילות)
+       ממלאים מראש את הנושא ואת ההודעה. נושא שאינו ברשימה - מתעלמים. */
+    var subject = form.querySelector("#subject");
+    var msg = form.querySelector("#msg");
+    if (subject && params.get("subject")) {
+      Array.prototype.forEach.call(subject.options, function (o) {
+        if (o.value === params.get("subject")) subject.value = o.value;
+      });
+    }
+    if (msg && params.get("msg") && !msg.value) msg.value = params.get("msg");
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var lines = [form.getAttribute("data-subject") || "פנייה מהאתר"];
@@ -346,7 +381,7 @@
         var v = f.value.trim();
         if (!v) return;
         var label = form.querySelector('label[for="' + f.id + '"]');
-        lines.push((label ? label.textContent.trim() : f.name) + ": " + v);
+        lines.push((label ? label.textContent.replace("*", "").trim() : f.name) + ": " + v);
       });
       window.open(
         "https://api.whatsapp.com/send?phone=" + form.getAttribute("data-whatsapp") +
@@ -354,6 +389,15 @@
         "_blank",
         "noopener"
       );
+      /* אישור בעמוד עצמו - אחרת הדף לא משתנה והמשתמש לא יודע אם משהו קרה */
+      var status = form.querySelector(".form-status");
+      if (!status) {
+        status = document.createElement("p");
+        status.className = "fineprint form-status";
+        status.setAttribute("role", "status");
+        form.appendChild(status);
+      }
+      status.textContent = "וואטסאפ נפתח בחלון חדש עם ההודעה שלכם. אם לא נפתח - שלחו אותה במייל (הקישור למעלה).";
     });
   });
 

@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import site from "../data/site.json";
 ---
 
 <Base
@@ -21,7 +22,7 @@ import Base from "../layouts/Base.astro";
 <h2>יצירת קשר</h2>
 <ul class="info-list">
 <li><strong>כתובת</strong>רחוב פקיעין 1, קניון שערי חדרה</li>
-<li><strong>שעות פעילות</strong>א' - ד': 10:00-23:30<br/>ה' - ש': 10:00-24:00</li>
+<li><strong>שעות פעילות</strong>{site.hours.map((h) => <span style="display:block">{h.label}: {h.value}</span>)}</li>
 <li><strong>טלפון</strong><a href="tel:+97246222575">04-6222575</a></li>
 <li><strong>פקס</strong>04-6222557</li>
 <li><strong>אימייל</strong><a href="mailto:all4fun@netvision.net.il">all4fun@netvision.net.il</a></li>
@@ -31,11 +32,11 @@ import Base from "../layouts/Base.astro";
 <form class="form-grid" data-whatsapp="972536402639" data-subject="פנייה מאתר באולינג שערי חדרה">
 <h3 style="margin: 0">השאירו פרטים ונחזור אליכם</h3>
 <div>
-<label for="fullname">שם מלא</label>
+<label for="fullname">שם מלא *</label>
 <input autocomplete="name" id="fullname" name="fullname" type="text" required/>
 </div>
 <div>
-<label for="phone">טלפון</label>
+<label for="phone">טלפון *</label>
 <input autocomplete="tel" id="phone" name="phone" type="tel" required/>
 </div>
 <div>
@@ -58,7 +59,7 @@ import Base from "../layouts/Base.astro";
 <textarea id="msg" name="msg" rows="4"></textarea>
 </div>
 <button class="btn" type="submit">שליחה בוואטסאפ</button>
-<p class="fineprint" style="margin: 0">הלחיצה פותחת את וואטסאפ עם הפרטים שמילאתם. אפשר גם במייל: <a href="mailto:all4fun@netvision.net.il">all4fun@netvision.net.il</a></p>
+<p class="fineprint" style="margin: 0">שדות עם * הם חובה. הלחיצה פותחת את וואטסאפ עם הפרטים שמילאתם. אפשר גם במייל: <a href="mailto:all4fun@netvision.net.il">all4fun@netvision.net.il</a></p>
 </form>
 </div>
 <div style="margin-top: 40px">
