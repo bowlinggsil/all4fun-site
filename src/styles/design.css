@@ -319,11 +319,13 @@ a.btn_accessibility ~ a.btn_accessibility { display: none !important; }
 .btn:focus-visible { outline-color: var(--navy); }
 input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
 
-/* נייד: הכדור המתגלגל צמוד לשוליים הימניים - תחילת השורה בעברית - אז הוא קטן יותר,
-   והפוטר מקבל מקום פנוי למטה כדי שהפינים והכדור לא יכסו את הכפתורים האחרונים. */
+/* נייד: הכדור המתגלגל צמוד לשוליים הימניים - תחילת השורה בעברית - אז הוא קטן יותר.
+   בדף הבית בלבד (שם יש את רצף הסטרייק) הפוטר מקבל מקום פנוי למטה, כדי שהפינים
+   והכדור שנוחת לא יכסו את כפתור המועדון ושורת הזכויות. בשאר העמודים אין סטרייק
+   ואין צורך ברווח. */
 @media (max-width: 640px) {
   .scroll-ball { width: 44px; height: 44px; right: 6px; }
-  .site-footer { padding-bottom: 150px; }
+  body:has(.strike-cam) .site-footer { padding-bottom: 140px; }
   .slide .wrap { padding-inline: 44px; }
 }
 
