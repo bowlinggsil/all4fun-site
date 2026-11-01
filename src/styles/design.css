@@ -197,6 +197,11 @@ button.btn { cursor:pointer; font:inherit; font-weight:700; }
 
 /* accessibility widget: button overlaps the header, rows open below it */
 .btn_accessibility { top: calc(var(--header-h) + 8px) !important; }
+/* התפריט הנייד נפתח בדיוק מתחת להדר, איפה שכפתור הנגישות צף, והכפתור
+   הסתיר את "דף הבית". בזמן שהתפריט פתוח הכפתור מוסתר, וחוזר כשנסגר.
+   display ולא visibility: הווידג'ט מגדיר transition על כל המאפיינים,
+   ו-visibility היה מחכה 0.3 שניות לפני שהכפתור נעלם. */
+body:has(#mainnav.open) .btn_accessibility { display: none !important; }
 .accessibility_div_wrap ~ .accessibility_div_wrap { display: none !important; }
 a.btn_accessibility ~ a.btn_accessibility { display: none !important; }
 #accessibility_action8 { display: none !important; }
