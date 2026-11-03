@@ -1,4 +1,4 @@
-/* <mesh-bg> — animated shader-gradient plane (ShaderGradient "defaults" look):
+/* <mesh-bg> - animated shader-gradient plane (ShaderGradient "defaults" look):
    3-colour noise-warped plane, grain on, rotationZ 50deg, positionX -1.4, uSpeed .4,
    uDensity 1.3, uFrequency 5.5, uAmplitude 1, uStrength 4, brightness 1.2, frameRate 10. */
 (function () {

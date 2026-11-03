@@ -336,3 +336,10 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px
 
 /* קישור ה-PDF מתחת לכפתור התיאום בכרטיס החבילה */
 .package-pdf { display: block; text-align: center; margin-top: 10px; font-size: .95em; }
+
+/* נייד: תשע נקודות הקרוסלה נכנסות בשורה אחת גם ברוחב 360px. מטרת המגע קטנה ל-25px
+   (המינימום הנגיש הוא 24px), והשורה מתרחקת מכפתור הוואטסאפ הצף שבפינה השמאלית. */
+@media (max-width: 640px) {
+  .slide-nav { gap: 2px; padding-inline: 12px 84px; }
+  .slide-nav a { padding: 7px; }
+}
